@@ -18,13 +18,17 @@ public class HomeWork2 {
         int a3 = 5849;
         String b3 = String.valueOf(a3);
         char c3 = b3.charAt(3);
-        System.out.println("Последняя цифра числа: " + c3);
+        System.out.println("Последняя цифра числа (метод строки): " + c3);
+        int c3Int = a3 % 10;
+        System.out.println("Последняя цифра числа (метод числа): " + c3Int);
 
         // Третья цифра пятизначного числа
         int a4 = 47654;
         String b4 = String.valueOf(a4);
         char c4 = b4.charAt(2);
-        System.out.println("Третья цифра числа 47654: " + c4);
+        System.out.println("Третья цифра числа 47654 (метод строки): " + c4);
+        int c4Int = (a4 % 1000) / 100;
+        System.out.println("Третья цифра числа 47654 (метод числа): " + c4Int);
 
         // Сумма цифр ab cd числа abcd
         int abcd = 6438;
