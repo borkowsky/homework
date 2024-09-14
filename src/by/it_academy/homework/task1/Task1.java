@@ -1,6 +1,6 @@
-package homework1;
+package by.it_academy.homework.task1;
 
-public class HomeWork1 {
+public class Task1 {
     public static void main(String[] args) {
         System.out.println("Привет дз1");
     }

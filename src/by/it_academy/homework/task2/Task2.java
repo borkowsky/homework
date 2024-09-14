@@ -1,6 +1,6 @@
-package homework2;
+package by.it_academy.homework.task2;
 
-public class HomeWork2 {
+public class Task2 {
     public static void main(String[] args) {
         // Произведение чисел
         int a1 = 2;
