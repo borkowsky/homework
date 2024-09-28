@@ -90,6 +90,7 @@ public class Task5 {
     }
 
     private static void exercise5(int[] array, int x) {
+        Arrays.sort(array);
         System.out.print("Массив для поиска значения: " + Arrays.toString(array) + ", искомое значение: " + x + ", элемент " + (Arrays.binarySearch(array, x) >= 0 ? "найден" : "не найден") + " в массиве");
     }
 
