@@ -22,20 +22,20 @@ public class Task5 {
     }
 
     private static void exercise1() {
-        int subsequenceNum = 20;
+        int subsequenceNum = getNumber("Введите количество членов последовательности:");
         int[] resultArray1 = new int[subsequenceNum];
         int result1Num = 1;
         for (int i = 0; i < resultArray1.length; i++) {
             resultArray1[i] = i == 0 ? 1 : (resultArray1[i - 1] < 0) ? result1Num : -(result1Num);
             result1Num++;
         }
-        System.out.println("Первые " + subsequenceNum + " элементов массива array1 " + Arrays.toString(resultArray1));
+        System.out.println("Первые " + subsequenceNum + " членов последновательности 1: " + Arrays.toString(resultArray1));
 
         int[] resultArray2 = new int[subsequenceNum];
         for (int i = 0; i < subsequenceNum; i++) {
             resultArray2[i] = i == 0 ? 1 : (resultArray2[i - 1] == 0) ? (resultArray2[i - 2] + 1) : 0;
         }
-        System.out.println("Первые " + subsequenceNum + " элементов массива array2 " + Arrays.toString(resultArray2));
+        System.out.println("Первые " + subsequenceNum + " членов последовательности 2: " + Arrays.toString(resultArray2));
     }
 
     private static void exercise2() {
