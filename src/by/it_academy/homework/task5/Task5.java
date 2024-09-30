@@ -23,19 +23,17 @@ public class Task5 {
 
     private static void exercise1() {
         int subsequenceNum = 20;
-        int[] array1 = {1, -2, 3, -4, 5, -6};
-        int[] array2 = {1, 0, 2, 0, 3, 0, 4};
-        System.out.println("Исходный массив array1 " + Arrays.toString(array1));
         int[] resultArray1 = new int[subsequenceNum];
-        for (int i = 0; i < subsequenceNum; i++) {
-            resultArray1[i] = (array1.length > i) ? array1[i] : (i % 2 == 0) ? (Math.abs(resultArray1[i - 1]) + 1) : -(Math.abs(resultArray1[i - 1]) + 1);
+        int result1Num = 1;
+        for (int i = 0; i < resultArray1.length; i++) {
+            resultArray1[i] = i == 0 ? 1 : (resultArray1[i - 1] < 0) ? result1Num : -(result1Num);
+            result1Num++;
         }
         System.out.println("Первые " + subsequenceNum + " элементов массива array1 " + Arrays.toString(resultArray1));
 
-        System.out.println("Исходный массив array2 " + Arrays.toString(array2));
         int[] resultArray2 = new int[subsequenceNum];
         for (int i = 0; i < subsequenceNum; i++) {
-            resultArray2[i] = (array2.length > i) ? array2[i] : (resultArray2[i - 1] == 0) ? (resultArray2[i - 2] + 1) : 0;
+            resultArray2[i] = i == 0 ? 1 : (resultArray2[i - 1] == 0) ? (resultArray2[i - 2] + 1) : 0;
         }
         System.out.println("Первые " + subsequenceNum + " элементов массива array2 " + Arrays.toString(resultArray2));
     }
@@ -90,8 +88,14 @@ public class Task5 {
     }
 
     private static void exercise5(int[] array, int x) {
-        Arrays.sort(array);
-        System.out.print("Массив для поиска значения: " + Arrays.toString(array) + ", искомое значение: " + x + ", элемент " + (Arrays.binarySearch(array, x) >= 0 ? "найден" : "не найден") + " в массиве");
+        boolean found = false;
+        for (int j : array) {
+            if (j == x) {
+                found = true;
+                break;
+            }
+        }
+        System.out.print("Массив для поиска значения: " + Arrays.toString(array) + ", искомое значение: " + x + ", элемент " + (found ? "найден" : "не найден") + " в массиве");
     }
 
     private static void exercise6(boolean recursive) {
@@ -121,7 +125,9 @@ public class Task5 {
 
     private static void exercise7(int[] array) {
         for (int i = 0, j = array.length - 1; i <= j; i++, j--) {
-            array[i] = array[j] = getRandomNumber(10, 99);
+            int number = getRandomNumber(10, 99);
+            array[i] = number;
+            array[j] = number;
         }
         System.out.println("Заполненный отзеркаленный массив: " + Arrays.toString(array));
     }
