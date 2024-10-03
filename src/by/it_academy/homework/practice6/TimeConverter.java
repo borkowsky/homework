@@ -24,4 +24,8 @@ public class TimeConverter {
     public boolean isEqual(TimeConverter timeConverter) {
         return (timeConverter.hours == this.hours) && (timeConverter.minutes == this.minutes) && (timeConverter.seconds == this.seconds);
     }
+
+    public int getSeconds() {
+        return (hours * 3600) + (minutes * 60) + seconds;
+    }
 }
