@@ -14,7 +14,7 @@ public class TimeConverter {
     public TimeConverter(int seconds) {
         this.seconds = seconds % 60;
         this.minutes = (seconds / 60) % 60;
-        this.hours = (seconds / 3600) % 24;
+        this.hours = seconds / 3600;
     }
 
     public String toString() {
