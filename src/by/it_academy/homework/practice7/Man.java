@@ -1,10 +1,10 @@
 package by.it_academy.homework.practice7;
 
 public class Man {
-    String name;
-    int age;
-    String gender;
-    int weight;
+    private String name;
+    private int age;
+    private String gender;
+    private int weight;
 
     public Man(String name, int age, String gender, int weight) {
         this.name = name;
@@ -33,5 +33,21 @@ public class Man {
                 ", gender='" + gender + '\'' +
                 ", weight=" + weight +
                 '}';
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public int getWeight() {
+        return weight;
     }
 }

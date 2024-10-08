@@ -27,10 +27,10 @@ public class Student extends Man {
     public String toString() {
         return "Student{" +
                 "year=" + year +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", gender='" + gender + '\'' +
-                ", weight=" + weight +
+                ", name='" + super.getName() + '\'' +
+                ", age=" + super.getAge() +
+                ", gender='" + super.getGender() + '\'' +
+                ", weight=" + super.getWeight() +
                 '}';
     }
 }
