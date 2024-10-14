@@ -3,7 +3,7 @@ package by.it_academy.homework.practice7;
 public class Man {
     private String name;
     private int age;
-    private String gender;
+    private final String gender;
     private int weight;
 
     public Man(String name, int age, String gender, int weight) {
