@@ -38,11 +38,11 @@ public class Main {
         System.out.println("Начальное значение: " + money.toStringPretty("ru"));
         int dollarsToAdd = Utils.getNumber("Введите количество долларов для добавления:");
         int centsToAdd = Utils.getNumber("Введите количество центов для добавления:");
-        money.add(centsToAdd, dollarsToAdd);
+        money.add(dollarsToAdd, centsToAdd);
         System.out.println("Результат сложения: " + money.toStringPretty("ru"));
         int dollarsToSubtract = Utils.getNumber("Введите количество долларов для вычитания:");
         int centsToSubtract = Utils.getNumber("Введите количество центов для вычитания:");
-        money.subtract(centsToSubtract, dollarsToSubtract);
+        money.subtract(dollarsToSubtract, centsToSubtract);
         System.out.println("Результат вычитания: " + money.toStringPretty("ru"));
         int dollars1 = Utils.getNumber("Введите количество долларов (для объекта сравнения):");
         int cents1 = Utils.getNumber("Введите количество центов (для объекта сравнения):");
