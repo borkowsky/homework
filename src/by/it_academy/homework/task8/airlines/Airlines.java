@@ -69,30 +69,22 @@ public class Airlines {
         return vehiclesList;
     }
 
-    public int findPlainBySeats(int seatsMin, int seatsMax) {
-        int resultIdx = -1;
-        int idx = 0;
-        for (Vehicle vehicle : this.vehiclesList) {
-            if (vehicle instanceof Plain && vehicle.getSeats() >= seatsMin && vehicle.getSeats() <= seatsMax) {
-                resultIdx = idx;
-                break;
-            }
-            idx++;
-        }
-        return resultIdx;
+    public List<Vehicle> findPlainBySeats(int seatsMin, int seatsMax) {
+        return this.vehiclesList
+                .stream()
+                .filter(vehicle -> vehicle instanceof Plain
+                        && vehicle.getSeats() >= seatsMin
+                        && vehicle.getSeats() <= seatsMax)
+                .toList();
     }
 
-    public int findPlainByLoadCapacity(int capacityMin, int capacityMax) {
-        int resultIdx = -1;
-        int idx = 0;
-        for (Vehicle vehicle : this.vehiclesList) {
-            if (vehicle instanceof Plain && vehicle.getLoadCapacity() >= capacityMin && vehicle.getLoadCapacity() <= capacityMax) {
-                resultIdx = idx;
-                break;
-            }
-            idx++;
-        }
-        return resultIdx;
+    public List<Vehicle> findPlainByLoadCapacity(int capacityMin, int capacityMax) {
+        return this.vehiclesList
+                .stream()
+                .filter(vehicle -> vehicle instanceof Plain
+                        && vehicle.getLoadCapacity() >= capacityMin
+                        && vehicle.getLoadCapacity() <= capacityMax)
+                .toList();
     }
 
     private void calculateVehiclesCounts() {

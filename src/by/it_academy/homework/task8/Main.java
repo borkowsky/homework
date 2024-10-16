@@ -72,21 +72,12 @@ public class Main {
         System.out.println(airlines.prettyToString());
         int minSeats = Utils.getNumber("Введите минимальное число посадочных мест:");
         int maxSeats = Utils.getNumber("Введите максимальное число посадочных мест:");
-        List<Vehicle> vehiclesList = airlines.getVehiclesList();
-        int vehicleIndex1 = airlines.findPlainBySeats(minSeats, maxSeats);
-        if (vehicleIndex1 > -1 && vehicleIndex1 < vehiclesList.size()) {
-            System.out.println("Найден самолет: " + vehiclesList.get(vehicleIndex1));
-        } else {
-            System.out.println("Самолет с указанными параметрами не был найден");
-        }
+        List<Vehicle> foundedVehicleList1 = airlines.findPlainBySeats(minSeats, maxSeats);
+        printPlainSearchResults(foundedVehicleList1);
         int minCapacity = Utils.getNumber("Введите минимальную грузоподъемность:");
         int maxCapacity = Utils.getNumber("Введите максимальную грузоподъемность:");
-        int vehicleIndex2 = airlines.findPlainByLoadCapacity(minCapacity, maxCapacity);
-        if (vehicleIndex2 > -1 && vehicleIndex2 < vehiclesList.size()) {
-            System.out.println("Найден самолет: " + vehiclesList.get(vehicleIndex2));
-        } else {
-            System.out.println("Самолет с указанными параметрами не был найден");
-        }
+        List<Vehicle> foundedVehicleList2 = airlines.findPlainByLoadCapacity(minCapacity, maxCapacity);
+        printPlainSearchResults(foundedVehicleList2);
     }
 
     private static Vehicle getRandomVehicle(String type, String[] names, int seatsMin, int seatsMax, int capacityMin, int capacityMax) {
@@ -107,6 +98,20 @@ public class Main {
                     Utils.getRandomNumber(capacityMin, capacityMax)
             );
         };
+    }
+
+    private static void printPlainSearchResults(List<Vehicle> list) {
+        if (!list.isEmpty()) {
+            System.out.println(Utils.declOfNum(list.size(), new String[]{"Найден", "Найдено", "Найдено"})
+                    + " "
+                    + list.size()
+                    + " "
+                    + Utils.declOfNum(list.size(), new String[]{"самолет", "самолета", "самолетов"})
+                    + ": ");
+            list.forEach(System.out::println);
+        } else {
+            System.out.println("Самолеты с указанными параметрами не был найдены");
+        }
     }
 
     private static String[] getVehicleNamesByType(String type) {
