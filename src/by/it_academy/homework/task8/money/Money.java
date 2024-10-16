@@ -19,32 +19,28 @@ public class Money {
         return dollars + "," + cents;
     }
 
-    public String toStringPretty(String locale) {
-        String[] dollarLabels = locale.equals("ru") ?
-                new String[]{"доллар", "доллара", "долларов"} :
-                new String[]{"dollar", "dollars", "dollars"};
-        String[] centsLabels = locale.equals("ru") ?
-                new String[]{"цент", "цента", "центов"} :
-                new String[]{"cent", "cents", "cents"};
+    public String toStringPretty() {
+        String[] dollarLabels = new String[]{"доллар", "доллара", "долларов"};
+        String[] centsLabels = new String[]{"цент", "цента", "центов"};
         return dollars + " " + Utils.declOfNum(dollars, dollarLabels)
                 + ", " + ((cents < 10) ? "0" + cents : cents) + " "
                 + Utils.declOfNum(cents, centsLabels);
     }
 
     public void add(int dollars, int cents) {
-        injectCents(convertToCents() + convertToCents(dollars, cents));
+        injectCents(convertToCents(this.dollars, this.cents) + convertToCents(dollars, cents));
     }
 
     public void add(int cents) {
-        injectCents(convertToCents() + cents);
+        injectCents(convertToCents(this.dollars, this.cents) + cents);
     }
 
     public void subtract(int dollars, int cents) {
-        injectCents(convertToCents() - convertToCents(dollars, cents));
+        injectCents(convertToCents(this.dollars, this.cents) - convertToCents(dollars, cents));
     }
 
     public void subtract(int cents) {
-        injectCents(convertToCents() - cents);
+        injectCents(convertToCents(this.dollars, this.cents) - cents);
     }
 
     public int getDollars() {
@@ -53,10 +49,6 @@ public class Money {
 
     public int getCents() {
         return cents;
-    }
-
-    private int convertToCents() {
-        return (dollars * 100) + cents;
     }
 
     @Override

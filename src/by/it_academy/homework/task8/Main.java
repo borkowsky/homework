@@ -35,15 +35,15 @@ public class Main {
         int dollars = Utils.getNumber("Введите количество долларов:");
         int cents = Utils.getNumber("Введите количество центов:");
         Money money = new Money(dollars, cents);
-        System.out.println("Начальное значение: " + money.toStringPretty("ru"));
+        System.out.println("Начальное значение: " + money.toStringPretty());
         int dollarsToAdd = Utils.getNumber("Введите количество долларов для добавления:");
         int centsToAdd = Utils.getNumber("Введите количество центов для добавления:");
         money.add(dollarsToAdd, centsToAdd);
-        System.out.println("Результат сложения: " + money.toStringPretty("ru"));
+        System.out.println("Результат сложения: " + money.toStringPretty());
         int dollarsToSubtract = Utils.getNumber("Введите количество долларов для вычитания:");
         int centsToSubtract = Utils.getNumber("Введите количество центов для вычитания:");
         money.subtract(dollarsToSubtract, centsToSubtract);
-        System.out.println("Результат вычитания: " + money.toStringPretty("ru"));
+        System.out.println("Результат вычитания: " + money.toStringPretty());
         int dollars1 = Utils.getNumber("Введите количество долларов (для объекта сравнения):");
         int cents1 = Utils.getNumber("Введите количество центов (для объекта сравнения):");
         Money money1 = new Money(dollars1, cents1);
