@@ -32,20 +32,20 @@ public class Main {
     }
 
     private static void exercise1() {
-        int dollars = Utils.getNumber("Введите количество долларов:");
-        int cents = Utils.getNumber("Введите количество центов:");
+        int dollars = Utils.scanNumber("Введите количество долларов:");
+        int cents = Utils.scanNumber("Введите количество центов:");
         Money money = new Money(dollars, cents);
         System.out.println("Начальное значение: " + money.toStringPretty());
-        int dollarsToAdd = Utils.getNumber("Введите количество долларов для добавления:");
-        int centsToAdd = Utils.getNumber("Введите количество центов для добавления:");
+        int dollarsToAdd = Utils.scanNumber("Введите количество долларов для добавления:");
+        int centsToAdd = Utils.scanNumber("Введите количество центов для добавления:");
         money.add(dollarsToAdd, centsToAdd);
         System.out.println("Результат сложения: " + money.toStringPretty());
-        int dollarsToSubtract = Utils.getNumber("Введите количество долларов для вычитания:");
-        int centsToSubtract = Utils.getNumber("Введите количество центов для вычитания:");
+        int dollarsToSubtract = Utils.scanNumber("Введите количество долларов для вычитания:");
+        int centsToSubtract = Utils.scanNumber("Введите количество центов для вычитания:");
         money.subtract(dollarsToSubtract, centsToSubtract);
         System.out.println("Результат вычитания: " + money.toStringPretty());
-        int dollars1 = Utils.getNumber("Введите количество долларов (для объекта сравнения):");
-        int cents1 = Utils.getNumber("Введите количество центов (для объекта сравнения):");
+        int dollars1 = Utils.scanNumber("Введите количество долларов (для объекта сравнения):");
+        int cents1 = Utils.scanNumber("Введите количество центов (для объекта сравнения):");
         Money money1 = new Money(dollars1, cents1);
         System.out.println(money.equals(money1) ? "Экземпляры равны" : "Экземпляры не равны");
     }
@@ -70,12 +70,12 @@ public class Main {
         Airlines airlines = new Airlines(vehicles);
         System.out.println("Сгенерирована авиакомпания");
         System.out.println(airlines.prettyToString());
-        int minSeats = Utils.getNumber("Введите минимальное число посадочных мест:");
-        int maxSeats = Utils.getNumber("Введите максимальное число посадочных мест:");
+        int minSeats = Utils.scanNumber("Введите минимальное число посадочных мест:");
+        int maxSeats = Utils.scanNumber("Введите максимальное число посадочных мест:");
         List<Vehicle> foundedVehicleList1 = airlines.findPlainBySeats(minSeats, maxSeats);
         printPlainSearchResults(foundedVehicleList1);
-        int minCapacity = Utils.getNumber("Введите минимальную грузоподъемность:");
-        int maxCapacity = Utils.getNumber("Введите максимальную грузоподъемность:");
+        int minCapacity = Utils.scanNumber("Введите минимальную грузоподъемность:");
+        int maxCapacity = Utils.scanNumber("Введите максимальную грузоподъемность:");
         List<Vehicle> foundedVehicleList2 = airlines.findPlainByLoadCapacity(minCapacity, maxCapacity);
         printPlainSearchResults(foundedVehicleList2);
     }
