@@ -15,13 +15,22 @@ public class Utils {
         return labels[(count % 100 > 4 && count % 100 < 20) ? 2 : cases[Math.min(count % 10, 5)]];
     }
 
-    public static int getNumber(String title) {
+    public static int scanNumber(String title) {
         System.out.println(title);
         return SCANNER.nextInt();
     }
 
-    public static int getNumber() {
+    public static int scanNumber() {
         return SCANNER.nextInt();
+    }
+
+    public static String scanString(String title) {
+        System.out.println(title);
+        return SCANNER.next();
+    }
+
+    public static String scanString() {
+        return SCANNER.next();
     }
 
     public static int getRandomNumber(int min, int max) {

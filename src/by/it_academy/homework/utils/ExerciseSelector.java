@@ -22,7 +22,7 @@ public class ExerciseSelector {
             if (idx > 0) {
                 System.out.print("Некорректный номер задачи! ");
             }
-            number = Utils.getNumber("Выберите задачу из списка:");
+            number = Utils.scanNumber("Выберите задачу из списка:");
             idx++;
         } while(number <= 0 || number > exercises.size());
         return number;
