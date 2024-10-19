@@ -3,20 +3,15 @@ package by.it_academy.homework.task9;
 import by.it_academy.homework.utils.ExerciseSelector;
 import by.it_academy.homework.utils.Utils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Main {
     public static void main(String[] args) {
-        String[] tasks = new String[]{
-                "Показать номера символов, совпадающих с последним символом строки.",
-                "Определить, является ли слово палиндромом.",
-                "Найдите количество вхождения слова 'test' в строке.",
-                "Регулярное выражение для поиска годов между 1977 и 1982.",
-                "Регулярное выражение для валидации IP адреса."
-        };
-        ExerciseSelector exerciseSelector = new ExerciseSelector(tasks);
+        ExerciseSelector exerciseSelector = getExerciseSelector();
         switch (exerciseSelector.selectExercise()) {
             case 1:
                 exercise1();
@@ -33,10 +28,29 @@ public class Main {
             case 5:
                 exercise5();
                 break;
+            case 6:
+                exercise6();
+                break;
+            case 7:
+                exercise7();
+                break;
             default:
                 System.out.println("Invalid task number provided!");
                 break;
         }
+    }
+
+    private static ExerciseSelector getExerciseSelector() {
+        String[] tasks = new String[]{
+                "Показать номера символов, совпадающих с последним символом строки.",
+                "Определить, является ли слово палиндромом.",
+                "Найдите количество вхождения слова 'test' в строке.",
+                "Регулярное выражение для поиска годов между 1977 и 1982.",
+                "Регулярное выражение для валидации IP адреса.",
+                "Регулярное выражение для нахождения Java X",
+                "Слово с минимальным числом символов"
+        };
+        return new ExerciseSelector(tasks);
     }
 
     public static void exercise1() {
@@ -108,5 +122,62 @@ public class Main {
         for (String address : addresses) {
             System.out.format("IP адрес %s %s%n", address, address.matches(pattern) ? "корректный" : "не корректный");
         }
+    }
+
+    public static void exercise6() {
+        String versions = "Versions: Java  5, Java 6, Java   7, Java 8, Java 12.";
+        Pattern pattern = Pattern.compile("Java(\\s+)(\\d+)");
+        Matcher matcher = pattern.matcher(versions);
+        List<String> versionsList = new ArrayList<>();
+        while (matcher.find()) {
+            versionsList.add(matcher.group(2));
+        }
+        System.out.format("Найдено %d %s Java: %s%n",
+                versionsList.size(),
+                Utils.declOfNum(versionsList.size(), new String[]{
+                        "версия",
+                        "версии",
+                        "версий"
+                }),
+                versionsList
+        );
+    }
+
+    public static void exercise7() {
+//      Найти слово, в котором число различных символов минимально.
+//      Слово может содержать буквы и цифры.
+//      Если таких слов несколько, найти первое из них.
+//      Например, в строке "fffff ab f 1234 jkjk" найденное слово должно быть "fffff".
+        String str = "Lorem ipsum dolor sit amet consectetur adipiscing elit";
+        String[] words = str.split(" ");
+        int minLength = str.length();
+        String resultWord = str;
+        for (int i = 0; i < words.length; i++) {
+            List<String> uniqueChars = new ArrayList<>();
+            char[] chars = words[i].toCharArray();
+            for (char ch : chars) {
+                if (!uniqueChars.contains(String.valueOf(ch))) {
+                    uniqueChars.add(String.valueOf(ch));
+                }
+            }
+            System.out.format("В слове %s %d %s%n",
+                    words[i],
+                    uniqueChars.size(),
+                    Utils.declOfNum(uniqueChars.size(), new String[]{
+                            "уникальное символ",
+                            "уникальных символа",
+                            "уникальных символов"
+                    })
+            );
+            if (uniqueChars.size() < minLength) {
+                resultWord = words[i];
+                minLength = uniqueChars.size();
+            }
+        }
+        System.out.println();
+        System.out.format("Первое слово с минимальным количеством символов: %s, их число: %d%n",
+                resultWord,
+                minLength
+        );
     }
 }
