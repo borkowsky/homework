@@ -16,20 +16,22 @@ public class Utils {
 
     public static int scanNumber(String title) {
         System.out.println(title);
-        return SCANNER.nextInt();
+        return scanNumber();
     }
 
     public static int scanNumber() {
-        return SCANNER.nextInt();
+        int num = SCANNER.nextInt();
+        SCANNER.nextLine();
+        return num;
     }
 
     public static String scanString(String title) {
         System.out.println(title);
-        return SCANNER.next();
+        return SCANNER.nextLine();
     }
 
     public static String scanString() {
-        return SCANNER.next();
+        return SCANNER.nextLine();
     }
 
     public static int getRandomNumber(int min, int max) {
