@@ -55,7 +55,7 @@ public class Main {
         Map<String, Double> items = getItemsHashMap();
         String[] keys = items.keySet().toArray(new String[0]);
         List<Item> itemsList = new ArrayList<>();
-        int[] randomArr = Utils.getRandomNumbers(Utils.getRandomNumber(3, items.size()), 0, items.size() - 1);
+        Integer[] randomArr = Utils.getRandomNumbers(Utils.getRandomNumber(3, items.size()), 0, items.size() - 1);
         for (int j : randomArr) {
             itemsList.add(new Item(keys[j], items.get(keys[j])));
         }

@@ -1,6 +1,7 @@
 package by.it_academy.homework.utils;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Utils {
     private static final Scanner SCANNER = new Scanner(System.in);
@@ -38,8 +39,8 @@ public class Utils {
         return RANDOM.nextInt(max - min + 1) + min;
     }
 
-    public static int[] getRandomNumbers(int size, int min, int max) {
-        int[] numbers = new int[size];
+    public static Integer[] getRandomNumbers(int size, int min, int max) {
+        Integer[] numbers = new Integer[size];
         for (int i = 0; i < numbers.length; i++) {
             numbers[i] = RANDOM.nextInt(max - min + 1) + min;
         }
@@ -48,6 +49,13 @@ public class Utils {
 
     public static <T> T getRandomArrayElement(T[] array) {
         return array[getRandomNumber(1, array.length) - 1];
+    }
+
+    public static <T> List<T> findDuplicates(List<T> list) {
+        return list.stream()
+                .filter((T i) -> Collections.frequency(list, i) > 1)
+                .distinct()
+                .collect(Collectors.toList());
     }
 
     private static <T> T[] shuffleArray(T[] array) {
