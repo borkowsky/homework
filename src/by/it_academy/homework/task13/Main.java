@@ -33,17 +33,17 @@ public class Main {
 
     private static void exercise1() {
         BookManager bookManager = new BookManager();
-        List<Book> booksFiltered1 = bookManager.getFilteredBooksList(book -> "Караткевич".equals(book.getAUTHOR()));
+        List<Book> booksFiltered1 = bookManager.getFilteredBooksList(book -> "Караткевич".equals(book.getAuthor()));
         System.out.println("Filtered books list by AUTHOR:");
         printList(booksFiltered1);
         System.out.println();
 
-        List<Book> sortedBooks1 = bookManager.getSortedBooksList(Comparator.comparing(Book::getNAME));
+        List<Book> sortedBooks1 = bookManager.getSortedBooksList(Comparator.comparing(Book::getName));
         System.out.println("Sorted books list by NAME:");
         printList(sortedBooks1);
         System.out.println();
 
-        Map<Boolean, List<Book>> groupedBooksList = bookManager.getGroupedBooksList(book -> 2020 < book.getYEAR());
+        Map<Boolean, List<Book>> groupedBooksList = bookManager.getGroupedBooksList(book -> 2020 < book.getYear());
         System.out.println("Grouped books list by YEAR greater than 2020:");
         for (Map.Entry<Boolean, List<Book>> entry : groupedBooksList.entrySet()) {
             System.out.printf("Key: %s, Value: %s%n", entry.getKey(), entry.getValue());
@@ -58,7 +58,9 @@ public class Main {
                 .sorted(Comparator.comparing(Main::getDigitFromString))
                 .sorted(Comparator.comparing(Main::getLetterFromString).reversed())
                 .skip(1)
-                .limit(initialList.size() - 1)
+                .limit(initialList.stream()
+                        .filter(str -> !str.contains("3"))
+                        .count() - 1)
                 .map(str -> {
                     str = str.toUpperCase();
                     System.out.println(str);

@@ -38,7 +38,9 @@ public class BookManager {
     }
 
     public List<Book> getFilteredBooksList(Predicate<Book> predicate) {
-        return books.stream().filter(predicate).collect(Collectors.toList());
+        return books.stream()
+                .filter(predicate)
+                .collect(Collectors.toList());
     }
 
     public List<Book> getSortedBooksList(Comparator<Book> comparator) {
